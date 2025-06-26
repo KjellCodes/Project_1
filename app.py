@@ -1,4 +1,5 @@
 import json
+import os
 
 def dump_json(contents: dict, filename: str):
     """Dumps the current terms and definitions into a file
@@ -32,6 +33,22 @@ def get_json(filename: str) -> dict:
         print(f"You did it, successfully loaded {filename}!")
     return contents
 
-test_file = "test_td.json"
-test_contents = get_json(test_file)
-dump_json(test_contents, test_file)
+def get_json_files() -> list:
+    """Gets the filenames of the files containing terms and definitions.
+
+    Returns:
+        list, contains filenames.
+    """
+    filenames = []
+    for filename in os.listdir("."):
+        if filename.endswith(".json"):
+            filenames.append(filename)
+            print(f"File {filename} found.")
+    return filenames
+
+test_files = get_json_files()
+for test_file in test_files:
+    if test_file != "test_td.json":
+        pass
+    test_contents = get_json(test_file)
+    dump_json(test_contents, test_file)
