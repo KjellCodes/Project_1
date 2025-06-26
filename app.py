@@ -46,9 +46,25 @@ def get_json_files() -> list:
             print(f"File {filename} found.")
     return filenames
 
-test_files = get_json_files()
-for test_file in test_files:
-    if test_file != "test_td.json":
+def temp_select_file(file_list: list) -> str:
+    """Temporary way of selecting which file to use.
+
+    Args:
+        file_list: list, contains filenames.
+
+    Returns:
+        str, contains the name of the selected file.
+    """
+    for count, filename in enumerate(file_list):
+        print(f"{count}: {filename}")
+    print("Please select a file using the number")
+    chosen_number = int(input(""))
+    if not file_list[chosen_number]:
         pass
-    test_contents = get_json(test_file)
-    dump_json(test_contents, test_file)
+    print(f"You selected {file_list[chosen_number]}")
+    return file_list[chosen_number]
+
+test_files = get_json_files()
+test_file = temp_select_file(test_files)
+test_contents = get_json(test_file)
+dump_json(test_contents, test_file)
