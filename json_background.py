@@ -68,8 +68,9 @@ def temp_select_file(file_list: list) -> str:
     print(f"You selected {file_list[chosen_number]}")
     return file_list[chosen_number]
 
-
+"""
 test_files = get_json_files()
 test_file = temp_select_file(test_files)
 test_contents = get_json(test_file)
 dump_json(test_contents, test_file)
+"""
