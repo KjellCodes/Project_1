@@ -14,7 +14,8 @@ def index():
 
 @app.route("/file_selection")
 def file_selection():
-    return render_template("file_selection.html")
+    files = get_json_files()
+    return render_template("file_selection.html", files=files)
 
 if __name__ == "__main__":
     app.run(debug=True)

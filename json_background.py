@@ -45,7 +45,7 @@ def get_json_files() -> list:
     filenames = []
     for filename in os.listdir("."):
         if filename.endswith(".json"):
-            filenames.append(filename)
+            filenames.append(filename.replace(".json", ""))
             print(f"File {filename} found.")
     return filenames
 
@@ -69,7 +69,6 @@ def temp_select_file(file_list: list) -> str:
     return file_list[chosen_number]
 
 """
-test_files = get_json_files()
 test_file = temp_select_file(test_files)
 test_contents = get_json(test_file)
 dump_json(test_contents, test_file)

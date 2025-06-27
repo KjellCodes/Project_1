@@ -8,5 +8,14 @@
 <body>
   <h1>Select a file</h1>
   <a href="/">Home page</a>
+  <table>
+    {% for i in range(0, files|length, 3) %}
+    <tr>
+        {% for j in range(i, i + 3) %}
+            <td>{{ files[j] if j < files|length else "" }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
 </body>
 </html>
