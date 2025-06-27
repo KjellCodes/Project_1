@@ -13,7 +13,7 @@ def dump_json(contents: dict, filename: str):
     """
     if not filename.endswith(".json"):
         pass
-    with open(filename, "w", encoding="utf-8") as file:
+    with open(f"./json_files/{filename}", "w+", encoding="utf-8") as file:
         json.dump(contents, file)
         print(f"You did it, {filename} has been updated succesfully!")
 
@@ -30,7 +30,7 @@ def get_json(filename: str) -> dict:
     """
     if not filename.endswith(".json"):
         pass
-    with open(filename, "r", encoding="utf-8") as file:
+    with open(f"./json_files/{filename}", "r", encoding="utf-8") as file:
         contents = json.load(file)
         print(f"You did it, successfully loaded {filename}!")
     return contents
@@ -43,33 +43,17 @@ def get_json_files() -> list:
         list, contains filenames.
     """
     filenames = []
-    for filename in os.listdir("."):
+    for filename in os.listdir("./json_files"):
         if filename.endswith(".json"):
             filenames.append(filename.replace(".json", ""))
             print(f"File {filename} found.")
     return filenames
 
-
-def temp_select_file(file_list: list) -> str:
-    """Temporary way of selecting which file to use.
-
-    Args:
-        file_list: list, contains filenames.
-
-    Returns:
-        str, contains the name of the selected file.
-    """
-    for count, filename in enumerate(file_list):
-        print(f"{count}: {filename}")
-    print("Please select a file using the number")
-    chosen_number = int(input(""))
-    if not file_list[chosen_number]:
-        pass
-    print(f"You selected {file_list[chosen_number]}")
-    return file_list[chosen_number]
-
-"""
-test_file = temp_select_file(test_files)
-test_contents = get_json(test_file)
-dump_json(test_contents, test_file)
-"""
+"""for i in range(3,10):
+    temp_fn = f"test_td{i}.json"
+    td_1 = i * 2 - 1
+    td_2 = i * 2
+    temp_dict = {f"Term_{td_1}": f"Def_{td_1}",
+                 f"Term_{td_2}": f"Def_{td_2}",}
+    print(temp_dict)
+    dump_json(temp_dict, temp_fn)"""
