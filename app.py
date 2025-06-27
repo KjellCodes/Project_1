@@ -6,10 +6,15 @@ from json_background import (dump_json,
                              temp_select_file)
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/file_selection")
+def file_selection():
+    return render_template("file_selection.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
