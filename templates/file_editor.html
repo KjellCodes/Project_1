@@ -3,10 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Select a file</title>
-  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
   <h1>Edit this</h1>
   <a href="/">Home page</a>
+  <table>
+    {% for i in range(0, terms|length, 1) %}
+    <tr>
+      <td>
+        <a href="/">{{ terms[i] }}</a>
+      </td>
+      <td>
+        <a href="/">{{ defs[i] }}</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
 </body>
 </html>

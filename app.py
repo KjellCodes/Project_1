@@ -18,7 +18,10 @@ def file_selection():
 
 @app.route("/file_edit/<string:filename>")
 def file_edit(filename):
-    return render_template("file_editor.html", filename=filename)
+    content = get_json(filename)
+    terms = [i for i in content.keys()]
+    defs = [i for i in content.values()]
+    return render_template("file_editor.html", filename=filename, terms=terms, defs=defs)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -30,7 +30,7 @@ def get_json(filename: str) -> dict:
     """
     if not filename.endswith(".json"):
         pass
-    with open(f"./json_files/{filename}", "r", encoding="utf-8") as file:
+    with open(get_filepath(f"json_files/{filename}"), "r", encoding="utf-8") as file:
         contents = json.load(file)
         print(f"You did it, successfully loaded {filename}!")
     return contents
@@ -43,17 +43,14 @@ def get_json_files() -> list:
         list, contains filenames.
     """
     filenames = []
-    for filename in os.listdir("./json_files"):
+    for filename in os.listdir(".\json_files"):
         if filename.endswith(".json"):
             filenames.append(filename.replace(".json", ""))
             print(f"File {filename} found.")
     return filenames
 
-"""for i in range(3,10):
-    temp_fn = f"test_td{i}.json"
-    td_1 = i * 2 - 1
-    td_2 = i * 2
-    temp_dict = {f"Term_{td_1}": f"Def_{td_1}",
-                 f"Term_{td_2}": f"Def_{td_2}",}
-    print(temp_dict)
-    dump_json(temp_dict, temp_fn)"""
+def get_filepath(filename: str) -> str:
+    base_path = os.path.abspath(
+        os.path.dirname(__file__))  # This gets the dir of app.py
+    full_path = os.path.join(base_path, f"{filename}.json")
+    return full_path
