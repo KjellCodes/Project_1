@@ -12,7 +12,13 @@
     {% for i in range(0, files|length, 3) %}
     <tr>
         {% for j in range(i, i + 3) %}
-            <td>{{ files[j] if j < files|length else "" }}</td>
+            <td>
+                {% if j < files|length %}
+                    <a href="/file_edit/{{ files[j] }}">{{ files[j] }}</a>
+                {% else %}
+                    <!-- Keeps cell empty if there is nothing to put into. -->
+                {% endif %}
+            </td>
         {% endfor %}
     </tr>
     {% endfor %}
