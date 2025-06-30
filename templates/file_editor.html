@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <title>Select a file</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='JavaScript/add_row.js') }}"></script>
 </head>
 <body>
   <h1>Edit this</h1>
   <a href="/">Home page</a>
   <form action="/submit/td" method="POST">
     <input type="hidden" name="filename" value="{{ filename }}">
-    <table>
+    <table id="table">
       <thead>
         <tr>
           <td>
@@ -21,17 +22,24 @@
           </td>
         </tr>
       </thead>
+      <tbody id="tbody">
       {% for i in range(0, terms|length, 1) %}
-      <tr>
-        <td>
-          <input type="text" name="terms" value="{{ terms[i] }}">
-        </td>
-        <td>
-          <input type="text" name="defs" value="{{ defs[i] }}">
-        </td>
-      </tr>
-      {% endfor %}
+        <tr>
+          <td>
+            <input type="text" name="terms" value="{{ terms[i] }}">
+          </td>
+          <td>
+            <input type="text" name="defs" value="{{ defs[i] }}">
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
       <tfoot>
+        <tr>
+          <td colspan="2">
+            <button type="button" class="add_another" onclick="addRow()">Add another line</button>
+          </td>
+        </tr>
         <tr>
           <td colspan="2">
             <button type="submit">Submit</button>
