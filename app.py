@@ -31,7 +31,7 @@ def submit_td():
     defs = request.form.getlist("defs")
     content = {}
     for i, term in enumerate(terms):
-        if term == "":
+        if term == "" or defs[i] == "":
             continue
         content[term] = defs[i]
     print(content)

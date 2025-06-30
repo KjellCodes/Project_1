@@ -31,6 +31,9 @@
           <td>
             <input type="text" name="defs" value="{{ defs[i] }}">
           </td>
+          <td>
+            <button type="button" onclick="removeRow(this)">Remove</button>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
