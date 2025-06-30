@@ -8,17 +8,37 @@
 <body>
   <h1>Edit this</h1>
   <a href="/">Home page</a>
-  <table>
-    {% for i in range(0, terms|length, 1) %}
-    <tr>
-      <td>
-        <a href="/">{{ terms[i] }}</a>
-      </td>
-      <td>
-        <a href="/">{{ defs[i] }}</a>
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
+  <form action="/submit/td" method="POST">
+    <input type="hidden" name="filename" value="{{ filename }}">
+    <table>
+      <thead>
+        <tr>
+          <td>
+            Terms
+          </td>
+          <td>
+            Definitions
+          </td>
+        </tr>
+      </thead>
+      {% for i in range(0, terms|length, 1) %}
+      <tr>
+        <td>
+          <input type="text" name="terms" value="{{ terms[i] }}">
+        </td>
+        <td>
+          <input type="text" name="defs" value="{{ defs[i] }}">
+        </td>
+      </tr>
+      {% endfor %}
+      <tfoot>
+        <tr>
+          <td colspan="2">
+            <button type="submit">Submit</button>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
 </body>
 </html>

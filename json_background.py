@@ -11,9 +11,8 @@ def dump_json(contents: dict, filename: str):
                        definitions will be placed into.
 
     """
-    if not filename.endswith(".json"):
-        pass
-    with open(f"./json_files/{filename}", "w+", encoding="utf-8") as file:
+    print(filename)
+    with open(get_filepath(f"json_files/{filename}"), "w+", encoding="utf-8") as file:
         json.dump(contents, file)
         print(f"You did it, {filename} has been updated succesfully!")
 
@@ -28,8 +27,6 @@ def get_json(filename: str) -> dict:
     Returns:
         dict, contains the current terms and definitions.
     """
-    if not filename.endswith(".json"):
-        pass
     with open(get_filepath(f"json_files/{filename}"), "r", encoding="utf-8") as file:
         contents = json.load(file)
         print(f"You did it, successfully loaded {filename}!")

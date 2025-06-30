@@ -12,3 +12,7 @@ tr, td {
     border: 1px solid orange;
     padding: 8px;
 }
+
+td {
+    text-align: center;
+}
