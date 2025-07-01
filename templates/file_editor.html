@@ -7,11 +7,13 @@
   <script src="{{ url_for('static', filename='JavaScript/add_row.js') }}"></script>
 </head>
 <body>
-  <h1>Edit this</h1>
+  <div class="header">
+    <h1>Edit this</h1>
+  </div>
   <a href="/">Home page</a>
   <form action="/submit/td" method="POST">
     <input type="hidden" name="filename" value="{{ filename }}">
-    <table id="table">
+    <table class="editor-table">
       <thead>
         <tr>
           <td>

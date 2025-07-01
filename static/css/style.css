@@ -1,5 +1,5 @@
-h1 {
-    text-align: center;
+body {
+    background-color: lightgray;
 }
 
 table{
@@ -15,4 +15,41 @@ tr, td {
 
 td {
     text-align: center;
+}
+
+.header {
+    text-align: center;
+    color: orange;
+    background-color: blue;
+    font-size: 30px;
+    margin: auto;
+    width: 35%;
+    border: 4px solid lightpink;
+    padding: 5px;
+}
+
+.file-selection {
+    background-color: aqua;
+}
+
+.file-selection a {
+    color: orange;
+}
+
+.editor-table {
+    background-color: aqua;
+}
+
+.editor-table td {
+    color: red;
+}
+
+.editor-table input {
+    color: red;
+}
+
+.editor-table button {
+    background-color: lightpink;
+    color: green;
+    border-color: lightpink;
 }
