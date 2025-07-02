@@ -51,3 +51,7 @@ def get_filepath(filename: str) -> str:
         os.path.dirname(__file__))  # This gets the dir of app.py
     full_path = os.path.join(base_path, f"{filename}.json")
     return full_path
+
+def create_json(filename: str):
+    contents = {}
+    dump_json(contents, filename)

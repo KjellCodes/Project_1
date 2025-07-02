@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_cors import CORS
 from json_background import (dump_json,
                              get_json,
-                             get_json_files)
+                             get_json_files, create_json)
 
 app = Flask(__name__)
 CORS(app)
@@ -15,6 +15,10 @@ def index():
 def file_selection():
     files = get_json_files()
     return render_template("file_selection.html", files=files)
+
+@app.route("/file_create")
+def file_create():
+    return render_template("file_creator.html")
 
 @app.route("/file_edit/<string:filename>")
 def file_edit(filename):
@@ -37,6 +41,12 @@ def submit_td():
     print(content)
     dump_json(content, filename)
     return redirect(url_for("file_selection"))
+
+@app.route("/submit/fc", methods=["POST"])
+def submit_fc():
+    filename = request.form.get("file_name")
+    create_json(filename)
+    return redirect(url_for("file_edit", filename=filename))
 
 if __name__ == "__main__":
     app.run(debug=True)

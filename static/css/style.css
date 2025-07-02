@@ -53,3 +53,15 @@ td {
     color: green;
     border-color: lightpink;
 }
+
+.file-creator {
+    text-align: center;
+}
+
+.file-creator input {
+    font-size: 30px;
+}
+
+.file-creator button {
+    font-size: 30px;
+}
