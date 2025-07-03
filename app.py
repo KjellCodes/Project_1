@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_cors import CORS
 from json_background import (dump_json,
                              get_json,
-                             get_json_files, create_json)
+                             get_json_files, create_json, delete_json)
 
 app = Flask(__name__)
 CORS(app)
@@ -19,6 +19,12 @@ def file_selection():
 @app.route("/file_create")
 def file_create():
     return render_template("file_creator.html")
+
+@app.route("/file_delete", methods=["POST"])
+def file_delete():
+    filename = request.form.get("filename")
+    delete_json(filename)
+    return redirect(url_for("file_selection"))
 
 @app.route("/file_edit/<string:filename>")
 def file_edit(filename):

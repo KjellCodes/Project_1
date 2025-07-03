@@ -40,10 +40,10 @@ def get_json_files() -> list:
         list, contains filenames.
     """
     filenames = []
-    for filename in os.listdir(".\json_files"):
+    for filename in os.listdir("./json_files"):
         if filename.endswith(".json"):
             filenames.append(filename.replace(".json", ""))
-            print(f"File {filename} found.")
+            #print(f"File {filename} found.")
     return filenames
 
 def get_filepath(filename: str) -> str:
@@ -55,3 +55,9 @@ def get_filepath(filename: str) -> str:
 def create_json(filename: str):
     contents = {}
     dump_json(contents, filename)
+
+def delete_json(filename: str):
+    print(get_filepath(f"json_files\\{filename}"))
+    print(get_json_files())
+    if filename in get_json_files():
+        os.remove(get_filepath(f"json_files\\{filename}"))
