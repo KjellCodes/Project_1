@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Home page</title>
-  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
   <div class="header">
     <h1>Home page</h1>
   </div>
-  <a href="/file_selection">Select a file</a>
-  <a href="/file_edit">Edit file</a>
+  <a href="/file_selection/edit">Select a file to <b>edit</b></a>
+  <a href="/file_selection/guess">Select a file to <b>guess</b></a>
 </body>
 </html>

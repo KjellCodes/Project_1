@@ -11,10 +11,15 @@ CORS(app)
 def index():
     return render_template("index.html")
 
-@app.route("/file_selection")
-def file_selection():
+@app.route("/file_selection/edit")
+def file_selection_edit():
     files = get_json_files()
-    return render_template("file_selection.html", files=files)
+    return render_template("file-selection-edit.html", files=files)
+
+@app.route("/file_selection/guess")
+def file_selection_guess():
+    files = get_json_files()
+    return render_template("file-selection-guess.html", files=files)
 
 @app.route("/file_create")
 def file_create():
@@ -24,7 +29,11 @@ def file_create():
 def file_delete():
     filename = request.form.get("filename")
     delete_json(filename)
-    return redirect(url_for("file_selection"))
+    return redirect(url_for("file_selection_edit"))
+
+@app.route("/guess")
+def guess():
+    return render_template("guess.html")
 
 @app.route("/file_edit/<string:filename>")
 def file_edit(filename):
