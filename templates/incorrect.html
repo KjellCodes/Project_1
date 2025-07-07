@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select a file</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="header">
+    <h1>Wrong answer</h1>
+  </div>
+  <p>Your answer: {{ definition }}. <br> Correct answer: {{ cor_def }}. </p>
+  <script>
+    let direction = {{ filename | tojson }};
+    const full_dir = "/guess/" + direction;
+    console.log(direction);
+    setTimeout(function() {
+        window.location = full_dir;
+    }, 2000);
+  </script>
+</body>
+</html>

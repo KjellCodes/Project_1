@@ -16,7 +16,7 @@
       {% for j in range(i, i + 3) %}
         <td>
           {% if j < files|length %}
-            <a href="/guess">{{ files[j] }}</a>
+            <a href="/guess/{{ files[j] }}">{{ files[j] }}</a>
           <!--  <a href="/file_edit/{{ files[j] }}">{{ files[j] }}</a> -->
           {% else %}
             <!-- Keeps cell empty if there is nothing to put into. -->

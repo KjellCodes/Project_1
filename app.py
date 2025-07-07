@@ -3,6 +3,7 @@ from flask_cors import CORS
 from json_background import (dump_json,
                              get_json,
                              get_json_files, create_json, delete_json)
+from guessing_background import (setup, get_rd)
 
 app = Flask(__name__)
 CORS(app)
@@ -31,9 +32,20 @@ def file_delete():
     delete_json(filename)
     return redirect(url_for("file_selection_edit"))
 
-@app.route("/guess")
-def guess():
-    return render_template("guess.html")
+@app.route("/guess/<string:filename>")
+def guess(filename):
+    if not "info" in globals():
+        global info
+        info = get_json(filename)
+        info = setup(info)
+    term, definition = get_rd(info)
+    print(info)
+    return render_template("guess.html",
+                           term=term,
+                           definition=definition,
+                           filename=filename,
+                           correct=info["correct"],
+                           incorrect=info["incorrect"])
 
 @app.route("/file_edit/<string:filename>")
 def file_edit(filename):
@@ -62,6 +74,18 @@ def submit_fc():
     filename = request.form.get("file_name")
     create_json(filename)
     return redirect(url_for("file_edit", filename=filename))
+
+@app.route("/submit/guess", methods=["POST"])
+def submit_guess():
+    filename = request.form.get("filename")
+    definition = request.form.get("definition")
+    cor_def = request.form.get("cor_def")
+    if definition == cor_def:
+        info["correct"] += 1
+        return render_template("correct.html", filename=filename)
+    else:
+        info["incorrect"] += 1
+        return render_template("incorrect.html", filename=filename, cor_def=cor_def, definition=definition)
 
 if __name__ == "__main__":
     app.run(debug=True)

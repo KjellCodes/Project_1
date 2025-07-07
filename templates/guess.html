@@ -9,14 +9,16 @@
   <div class="header">
     <h1>Take your guess</h1>
   </div>
-  <form>
+  <form method="POST" action="/submit/guess">
+    <input type="hidden" name="info" value="{{ info }}">
+    <input type="hidden" name="cor_def" value="{{ definition }}">
     <table>
       <tr>
         <td>
           Term:
         </td>
         <td>
-          Term to guess here
+          {{ term }}
         </td>
       </tr>
       <tr>
@@ -24,12 +26,28 @@
           Definition
         </td>
         <td>
-          Input field here
+          <input type="text" name="definition" id="definition" placeholder="Enter a definition here">
         </td>
       </tr>
       <tr>
         <td colspan="2">
           <button type="submit">Submit</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Correct:
+        </td>
+        <td>
+          {{ correct }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Incorrect:
+        </td>
+        <td>
+          {{ incorrect }}
         </td>
       </tr>
     </table>

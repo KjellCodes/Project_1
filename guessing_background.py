@@ -6,14 +6,6 @@ def setup(file_contents):
                "fc":file_contents}
     return content
 
-def correct(cont):
-    cont["correct"] += 1
-    return cont
-
-def incorrect(cont):
-    cont["incorrect"] += 1
-    return cont
-
 def get_rd(cont):
     ter, defi = random.choice(list(cont["fc"].items()))
     return ter, defi
@@ -28,5 +20,3 @@ def temp_set():
         print("Correct")
     else:
         print(f"Incorrect, {definition}")
-
-temp_set()
